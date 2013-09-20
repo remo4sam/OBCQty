@@ -5,33 +5,38 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertThat;
 
-public class UnitTest {
+public class MeasurementTest {
 
-    private Unit oneFoot;
-    private Unit oneInch;
+    private Measurement oneFoot;
 
     @Before
     public void setUp(){
-        oneFoot = new Unit(1, "foot");
+        oneFoot = new Measurement(1, UnitType.FOOT);
     }
 
     @Test
     public void twoUnitsOfSameTypeAndValueShouldBeEqual(){
-        assertThat(oneFoot, is(new Unit(1, "foot")));
+        assertThat(oneFoot, is(new Measurement(1, UnitType.FOOT)));
     }
 
     @Test
     public void twoUnitsOfSameTypeAndDifferentValueShouldNotBeEqual(){
-        assertThat(oneFoot, is(not(new Unit(2, "foot"))));
+        assertThat(oneFoot, is(not(new Measurement(2, UnitType.FOOT))));
     }
 
     @Test
     public void twoUnitsOfDifferentTypeAndSameValueShouldNotBeEqual(){
-        assertThat(oneFoot, is(not(new Unit(1, "inch"))));
+        assertThat(oneFoot, is(not(new Measurement(1, UnitType.INCH))));
     }
 
     @Test
     public void twoUnitsOfDifferentTypeAndDifferentValueShouldNotBeEqual(){
-        assertThat(oneFoot, is(not(new Unit(2, "inch"))));
+        assertThat(oneFoot, is(not(new Measurement(2, UnitType.INCH))));
     }
+
+    @Test
+    public void shouldConvertFeetToInches(){
+        assertThat(oneFoot.convert(), is(new Measurement(12, UnitType.INCH)));
+    }
+
 }
