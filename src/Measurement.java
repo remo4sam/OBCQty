@@ -16,15 +16,18 @@ public class Measurement {
         }
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
         Measurement measurement = (Measurement) o;
+        Measurement measurementConverted = measurement.convert();
+        Measurement thisConverted = this.convert();
 
-        if (value != measurement.value) return false;
-        if (!unitType.equals(measurement.unitType)) return false;
+        if (thisConverted.value != measurementConverted.value) return false;
+        if (!thisConverted.unitType.equals(measurementConverted.unitType)) return false;
 
         return true;
     }
