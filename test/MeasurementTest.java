@@ -53,5 +53,25 @@ public class MeasurementTest {
     public void oneMileShouldEqual1760Yards(){
         assertThat(new Measurement(1, UnitType.MILE), is(new Measurement(1760,UnitType.YARD)));
     }
+    @Test
+    public void oneTableSpoonEqualsThreeTeaSpoons(){
+        assertThat(new Measurement(1,UnitType.TABLESPOON),is(new Measurement(3,UnitType.TEASPOON)));
+    }
+
+    @Test
+    public void oneOunceEqualsTwoTableSpoons(){
+        assertThat(new Measurement(1,UnitType.OUNCE),is(new Measurement(2,UnitType.TABLESPOON)));
+    }
+
+    @Test
+    public void oneCupEqualsEightOunces(){
+        assertThat(new Measurement(1,UnitType.CUP),is(new Measurement(8,UnitType.OUNCE)));
+    }
+
+    @Test
+    public void oneCupNotEqualsOneFoot(){
+        assertThat(new Measurement(1,UnitType.CUP),is(not(new Measurement(1,UnitType.FOOT))));
+    }
+
 
 }
