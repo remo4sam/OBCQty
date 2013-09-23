@@ -48,4 +48,15 @@ public class MeasurementTest {
     public void oneYardShouldEqualsThreeFeet(){
         assertThat(new Measurement(1, UnitType.YARD),is(new Measurement(3,UnitType.FOOT)));
     }
+
+    @Test
+    public void threeFeetShouldEqualOneYard(){
+        assertThat(new Measurement(3, UnitType.FOOT),is(new Measurement(1,UnitType.YARD)));
+    }
+
+    @Test
+    public void oneMileShouldEqual1760Yards(){
+        assertThat(new Measurement(1, UnitType.MILE), is(new Measurement(1760,UnitType.YARD)));
+    }
+
 }
