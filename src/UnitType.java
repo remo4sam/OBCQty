@@ -1,3 +1,3 @@
 public enum UnitType {
-    FOOT,INCH
+    FOOT,INCH, YARD, MILE;
 }

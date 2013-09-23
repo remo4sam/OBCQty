@@ -43,4 +43,9 @@ public class MeasurementTest {
     public void oneFootShouldEqualsTwelveInches(){
         assertThat(oneFoot,is(new Measurement(12,UnitType.INCH)));
     }
+
+    @Test
+    public void oneYardShouldEqualsThreeFeet(){
+        assertThat(new Measurement(1, UnitType.YARD),is(new Measurement(3,UnitType.FOOT)));
+    }
 }

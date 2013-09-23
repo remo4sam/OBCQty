@@ -8,12 +8,26 @@ public class Measurement {
     }
 
     public Measurement convert(){
-        if(this.unitType == UnitType.INCH)
-            return this;
-        else{
-            int FOOT_INCH_CONVERSION = 12;
-            return new Measurement(this.value * FOOT_INCH_CONVERSION, UnitType.INCH);
+        Measurement convertedMeasurement;
+        int FOOT_INCH_CONVERSION = 12;
+        int YARD_INCH_CONVERSION = 3 * FOOT_INCH_CONVERSION;
+        int MILE_INCH_CONVERSION = 1760 * YARD_INCH_CONVERSION;
+        switch (this.unitType) {
+            case FOOT:
+                convertedMeasurement = new Measurement(this.value * FOOT_INCH_CONVERSION, UnitType.INCH);
+                break;
+            case YARD:
+                convertedMeasurement = new Measurement(this.value * YARD_INCH_CONVERSION, UnitType.INCH);
+                break;
+            case MILE:
+                convertedMeasurement = new Measurement(this.value * MILE_INCH_CONVERSION, UnitType.INCH);
+                break;
+            default:
+                convertedMeasurement = this;
+                break;
         }
+
+        return convertedMeasurement;
     }
 
 
