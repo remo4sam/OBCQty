@@ -7,10 +7,6 @@ public class Measurement {
         this.unitType = unitType;
     }
 
-    public Measurement convert(){
-      return unitType.convert(this.value);
-    }
-
 
     @Override
     public boolean equals(Object o) {
@@ -18,8 +14,8 @@ public class Measurement {
         if (o == null || getClass() != o.getClass()) return false;
 
         Measurement measurement = (Measurement) o;
-        Measurement measurementConverted = measurement.convert();
-        Measurement thisConverted = this.convert();
+        Measurement measurementConverted = measurement.unitType.convert(measurement.value);
+        Measurement thisConverted = unitType.convert(this.value);
 
         if (thisConverted.value != measurementConverted.value) return false;
         if (!thisConverted.unitType.equals(measurementConverted.unitType)) return false;

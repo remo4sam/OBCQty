@@ -35,11 +35,6 @@ public class MeasurementTest {
     }
 
     @Test
-    public void shouldConvertFeetToInches(){
-        assertThat(oneFoot.convert(), is(new Measurement(12, UnitType.INCH)));
-    }
-
-    @Test
     public void oneFootShouldEqualsTwelveInches(){
         assertThat(oneFoot,is(new Measurement(12,UnitType.INCH)));
     }
