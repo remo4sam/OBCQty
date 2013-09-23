@@ -8,12 +8,7 @@ public class Measurement {
     }
 
     public Measurement convert(){
-        if(this.unitType == UnitType.INCH)
-            return this;
-        else{
-            int FOOT_INCH_CONVERSION = 12;
-            return new Measurement(this.value * FOOT_INCH_CONVERSION, UnitType.INCH);
-        }
+      return unitType.convert(this.value);
     }
 
 
