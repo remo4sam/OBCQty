@@ -73,5 +73,15 @@ public class MeasurementTest {
         assertThat(new Measurement(1,UnitType.CUP),is(not(new Measurement(1,UnitType.FOOT))));
     }
 
+    @Test
+    public void sumOfOneFootAndThreeInchesIsFifteenInches() throws MeasurementTypeException{
+        assertThat(oneFoot.add(new Measurement(3,UnitType.INCH)),is(new Measurement(15, UnitType.INCH)));
+    }
+
+    @Test(expected = MeasurementTypeException.class)
+    public void sumOfOneFootAndOneCupThrowsATypeException() throws MeasurementTypeException{
+        oneFoot.add(new Measurement(1,UnitType.CUP));
+    }
+
 
 }
