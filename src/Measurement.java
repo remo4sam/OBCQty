@@ -29,4 +29,14 @@ public class Measurement {
         result = 31 * result + unitType.hashCode();
         return result;
     }
+
+    public Measurement add(Measurement measurement) throws MeasurementTypeException {
+        Measurement measurementConverted = measurement.unitType.convert(measurement.value);
+        Measurement thisConverted = unitType.convert(this.value);
+
+        if(thisConverted.unitType != measurementConverted.unitType)
+            throw new MeasurementTypeException("Types do not match");
+
+        return new Measurement(thisConverted.value + measurementConverted.value,thisConverted.unitType);
+    }
 }
